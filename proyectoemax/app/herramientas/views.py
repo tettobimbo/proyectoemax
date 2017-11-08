@@ -11,13 +11,13 @@ from app.herramientas.forms import herramientasform
 
 def crearherramienta(request):
     if request.method == 'POST':
-        form = herramientasform(request.POST)
+        form = herramientasform(request.POST, request.FILES)
         if form.is_valid():
-            herramienta = form.save()
+            herramienta = form.save(commit=False)
             herramienta.save()
-            return HttpResponseRedirect('/')
-        else:
-            form = herramientasform()
+            return HttpResponseRedirect('listarherramienta')
+    else:
+        form = herramientasform()
     template = loader.get_template('herramientas/herramienta_nueva.html')
     context = { 'form' : form }
     return HttpResponse(template.render(context, request))

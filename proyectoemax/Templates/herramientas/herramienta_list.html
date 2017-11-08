@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
+    <a href="{% url 'herramientas:crearherramienta' %}">NUEVO PRODUCTO</a>
     {%for hr in herramienta%}
     <LI>
       <a href="{% url 'herramientas:detalle_herramienta' hr.pk %}">

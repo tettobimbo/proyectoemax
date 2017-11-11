@@ -1,0 +1,21 @@
+{% extends "usuarios/base_usuario.html" %}
+
+{% block form %}
+  <h1>LOGIN</h1>
+  <form action="" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="login">
+      <input type="text" name="username" value="">
+      <input type="text" name="password" value="">
+      <button type="submit" name="button">login</button>
+  </form>
+
+<h1>Sign up</h1>
+  <form action="" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="action" value="signup">
+      <input type="text" name="username" value="">
+      <input type="text" name="password" value="">
+      <button type="submit" name="button">signup</button>
+  </form>
+{% endblock %}

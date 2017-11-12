@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  {% load staticfiles %}
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="{% static 'css/base.css' %}">
-</head>
-<body>
-    <a href="{% url 'herramientas:crearherramienta' %}">NUEVA HERRAMIENTA</a>
-    {%for hr in herramienta%}
+{% extends "herramientas/herramientabase.html" %}
+
+{% block list %}
+    <a href="{% url 'herramientas:HerramientaCreate' %}">NUEVA HERRAMIENTA</a>
+    {%for hr in object_list%}
     <LI>
-      <a href="{% url 'herramientas:detalle_herramienta' hr.pk %}">
+      <a href="{% url 'herramientas:HerramientaDetail' hr.id %}">
       {{hr.nombre}} |
       </a>
-    <img src="{{ hr.imagen.url }}" alt="">
+    {% if hr.imagen %} <img src="{{ hr.imagen.url }}" alt=""> {% endif %}
     </LI>
     {% endfor %}
-
-</body>
-</html>
+{% endblock %}

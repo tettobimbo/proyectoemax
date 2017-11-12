@@ -1,0 +1,10 @@
+{% extends "herramientas/herramientabase.html" %}
+
+{% block content %}
+<h2>¿Desea eliminar la herramienta {{ herramienta.nombre }}?</h2>
+<form method="POST" action="">
+    {% csrf_token %}
+    <input type="submit" value="Confirmar">
+</form>
+
+{% endblock %}

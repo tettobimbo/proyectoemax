@@ -3,9 +3,10 @@ from django.conf.urls import url
 from app.materiales import views
 
 urlpatterns = [
-#    url(r'^eliminarmaterial', views.eliminarmaterial, name='eliminarmaterial'),
-#    url(r'^editarmaterial', views.modificarmaterial , name='editar_material'),
-    url(r'^crearmaterial', views.crearmaterial , name='nuevo_material'),
-    url(r'^listarmaterial', views.listarmaterial , name='material_lista'),
+    url(r'^eliminarmaterial/(?P<pk>\d+)/$', views.MaterialesDelete.as_view(), name='MaterialesDelete'),
+    url(r'^editarmaterial/(?P<pk>\d+)/$', views.MaterialesUpdate.as_view() , name='MaterialesUpdate'),
+    url(r'^crearmaterial', views.MaterialesCreate.as_view() , name='MaterialesCreate'),
+    url(r'^listarmaterial', views.MaterialesList.as_view() , name='MaterialesList'),
+    url(r'^detalle_material/(?P<pk>\d+)/$', views.MaterialesDetail.as_view() , name='MaterialesDetail'),
 
 ]

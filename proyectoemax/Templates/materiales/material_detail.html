@@ -1,0 +1,10 @@
+{% extends "materiales/base_material.html" %}
+
+{% block nombre %}
+  {{ material.nombre }} | <a href="{% url 'materiales:MaterialesUpdate' material.id %}">EDITAR</a> |
+  <a href="{% url 'materiales:MaterialesDelete' material.id %}">ELIMINAR</a>
+{% endblock %}
+
+{% block content %}
+  {% if material.imagen %}<img src="{{ material.imagen.url }}" alt="">{% endif %}
+{% endblock %}

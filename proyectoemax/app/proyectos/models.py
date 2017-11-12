@@ -6,11 +6,10 @@ from django.db import models
 
 # Create your models here.
 class proyecto(models.Model):
-    fechaentrega = models.DateField()
+    fechaentrega = models.DateField() #fecha de entrega de los materiales y las herramientas
     direccion = models.CharField(max_length=50)
     descripcion= models.CharField(max_length=50)
     encargado= models.CharField(max_length=50)
-    totalherramientas=models.IntegerField()
     totalmaterial=models.IntegerField()
     #Usuario = models.ForeignKey(usuario, null=True, blank=True, on_delete=models.CASCADE)
     Material=models.ManyToManyField(material, blank=True)

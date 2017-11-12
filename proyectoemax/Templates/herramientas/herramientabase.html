@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  {% load staticfiles %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
-    <h1>Nueva herramienta</h1>
-
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-         {{ form.as_p }}
-      <button type="submit">aceptar</button>
-    </form>
-
+  {% block list %}  {% endblock %}
+  <h1>{% block nombre %}  {% endblock %}</h1>
+  {% block content %}  {% endblock %}
 </body>
 </html>

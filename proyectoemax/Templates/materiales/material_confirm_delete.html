@@ -1,0 +1,11 @@
+{% extends "materiales/base_material.html" %}
+
+{% block content %}
+<h2>Desea eliminar este material {{ material.nombre}}</h2>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="confirmar">
+
+</form>
+{% endblock %}

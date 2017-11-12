@@ -1,0 +1,9 @@
+{% extends "herramientas/herramientabase.html" %}
+
+{% block nombre %}
+  {{ herramienta.nombre }} |  <a href="{% url 'herramientas:HerramientaUpdate' herramienta.id %}">editar</a> | <a href="{% url 'herramientas:HerramientaDelete' herramienta.id %}">eliminar</a>
+{% endblock %}
+
+{% block content %}
+{% if hr.imagen %} <img src="{{  herramienta.imagen.url }}" alt=""> {% endif %}
+{% endblock %}

@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'app.herramientas',
     'app.materiales',
     'app.proyectos',
-    'app.solicitudproyectos',
+    'app.RetornoDeHerramientas',
     'app.usuarios',
 
 

@@ -1,0 +1,14 @@
+{% extends "materiales/base_material.html" %}
+
+{% block list %}
+   <a href="{% url 'materiales:MaterialesCreate' %}">NUEVO MATERIAL</a>
+
+    {% for mt in object_list %}
+    <li>
+      <a href="{% url 'materiales:MaterialesDetail' mt.id %}">
+      {{mt.nombre}}
+      </a>
+      {% if mt.imagen %}<img src="{{ mt.imagen.url }}" alt=""> {% endif %}
+    </li>
+    {% endfor %}
+{% endblock %}

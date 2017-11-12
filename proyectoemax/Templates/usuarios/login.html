@@ -1,21 +1,38 @@
-{% extends "usuarios/base_usuario.html" %}
+<!DOCTYPE html>
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+<html>
+<head>
+<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="admin.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,400italic,600italic,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
 
-{% block form %}
-  <h1>LOGIN</h1>
-  <form action="" method="POST">
-      {% csrf_token %}
-      <input type="hidden" name="action" value="login">
-      <input type="text" name="username" value="">
-      <input type="text" name="password" value="">
-      <button type="submit" name="button">login</button>
-  </form>
 
-<h1>Sign up</h1>
-  <form action="" method="POST">
-      {% csrf_token %}
-      <input type="hidden" name="action" value="signup">
-      <input type="text" name="username" value="">
-      <input type="text" name="password" value="">
-      <button type="submit" name="button">signup</button>
-  </form>
-{% endblock %}
+  <div id="header">
+    <div class="logo">
+      <a href="#">Login<span>EmaxSoftware</span></a>
+
+
+  <div id="container">
+      <div id="box">
+        <form action="" method="POST">
+            {% csrf_token %}
+        <input type="hidden" name="action" value="login">
+        <div class="box-top">Authentication</div>
+        <div class="box-panel"> UserName: <input type="text" name="username" value="">  </div>
+        <div class="box-panel"> PassWord <input type="text" name="password" value="">  </div>
+      <center>  <div class="box-panel"> <button type="submit" name="button">Aceptar</button>  </div> </center>
+
+
+      </form>
+      </div>
+  </div>
+
+
+
+</body>
+</html>

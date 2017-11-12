@@ -1,0 +1,5 @@
+{% extends "proyectos/proyectobase.html" %}
+
+{% block content %}
+  {{ proyecto.descripcion }} |  <a href="{% url 'proyectos:ProyectoUpdate' proyecto.id %}">editar</a> | <a href="{% url 'proyectos:ProyectoDelete' proyecto.id %}">eliminar</a>
+{% endblock %}

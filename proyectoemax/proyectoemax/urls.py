@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^herramientas/', include('app.herramientas.urls',namespace='herramientas')),
     url(r'^materiales/', include('app.materiales.urls',namespace='materiales')),
+    url(r'^proyectos/', include('app.proyectos.urls',namespace='proyectos')),
     url(r'^', include('app.usuarios.urls',namespace='login')),
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,13 @@
+{% extends "proyectos/proyectobase.html" %}
+
+{% block list %}
+    <a href="{% url 'proyectos:ProyectoCreate' %}">NUEVO PROYECTO</a>
+    {%for hr in object_list%}
+    <LI>
+      <a href="{% url 'proyectos:ProyectoDetail' hr.id %}">
+      {{hr.id  }} |
+      </a>
+
+    </LI>
+    {% endfor %}
+{% endblock %}

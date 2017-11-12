@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.core.urlresolvers import reverse_lazy
+from django.http import HttpResponse, HttpResponseRedirect
+from django.template import loader
+from django.shortcuts import render , get_object_or_404
+from app.proyectos.models import proyecto
+from app.proyectos.forms import proyectoform
 from django.shortcuts import render
 from django.views.generic import (
     ListView,
@@ -9,42 +14,24 @@ from django.views.generic import (
     UpdateView,
     CreateView
 )
-from app.proyectos.models import proyecto
 
-class proyectosCreateView(CreateView):
+
+class ProyectoCreate(CreateView):
     model = proyecto
-    field =[
-        'fechaentrega',
-        'direccion',
-        'descripcion',
-        'encargado',
-        'totalherramientas',
-        'totalmaterial',
-        'usuario',
-        'material',
-        'herramienta'
+    fields = '__all__'
+    success_url = reverse_lazy('proyectos:ProyectoList')
 
-    ]
-    template_name = 'proyectos/proyecto_form.html'
-    succes_url = reverse_lazy('proyectos:proyecto_lista')
-
-class proyectosListView(ListView):
+class ProyectoUpdate(UpdateView):
     model = proyecto
-    template_name = 'proyectos/proyecto_list.html'
-    context_object_name = 'proyectos'
+    fields = '__all__'
+    success_url = reverse_lazy('proyectos:ProyectoList')
 
-class proyectosUpdateView(UpdateView):
+class ProyectoDelete(DeleteView):
     model = proyecto
-    field =[
-        'fechaentrega',
-        'direccion',
-        'descripcion',
-        'encargado',
-        'totalherramientas',
-        'totalmaterial',
-        'usuario',
-        'material',
-        'herramienta'
-    ]
-    template_name = 'proyectos/proyecto_form.html'
-    succes_url = reverse_lazy('proyectos:proyecto_lista')
+    success_url = reverse_lazy('proyectos:ProyectoList')
+
+class ProyectoList(ListView):
+    model = proyecto
+
+class ProyectoDetail(DetailView):
+    model = proyecto

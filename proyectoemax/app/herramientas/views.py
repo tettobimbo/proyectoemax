@@ -18,19 +18,6 @@ from django.views.generic.edit import(
 #from Templates import herramientas
 
 
-#def crearherramienta(request):
-#    if request.method == 'POST':
-#        form = herramientasform(request.POST, request.FILES)
-#        if form.is_valid():
-#            herramienta = form.save(commit=False)
-#            herramienta.save()
-#            return HttpResponseRedirect('listarherramienta')
-#    else:
-#        form = herramientasform()
-#    template = loader.get_template('herramientas/herramienta_nueva.html')
-#    context = { 'form' : form }
-#    return HttpResponse(template.render(context, request))
-
 class HerramientaCreate(CreateView):
     model = herramienta
     fields = '__all__'
@@ -44,7 +31,7 @@ class HerramientaUpdate(UpdateView):
 class HerramientaDelete(DeleteView):
     model = herramienta
     success_url = reverse_lazy('herramientas:HerramientaList')
-    
+
 class HerramientaList(ListView):
     model = herramienta
 

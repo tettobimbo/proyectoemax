@@ -13,7 +13,7 @@
 
 <div id="header">
   <div class="logo">
-    <a href="#">Emax<span>Software</span>| {% if user.is_authenticated %} {{user.username}} {% endif %} |</a>
+    <a href="#">Emax<span>Software | Bienvenido {% if user.is_authenticated %} {{user.username}} {% endif %} | </span> </a>
   </div>
 
 </div>
@@ -26,12 +26,14 @@
 
   <div class="sidebar">
     <ul id="nav">
-      <li><a class="selected" href="#">Proyectos</a></li>
-      <li><a href="#">Herramienta</a></li>
-      <li><a href="#">Material</a></li>
-      <li><a href="#">Retorno de Herramientas</a></li>
-      <li><a href="#">Usuarios</a></li>
-      <li><a href=" {% url 'login:logout' %} ">LogOut</a></li>
+
+      <li><a href="{% url 'proyectos:ProyectoList' %}">Proyectos</a></li>
+      <li><a href="{% url 'herramientas:HerramientaList' %}">Herramientas</a></li>
+      <li><a href="{% url 'materiales:MaterialesList' %}">Materiales</a></li>
+      <li><a href="{% url 'usuarios:logout' %}">Retorno de Herramientas</a></li>
+      <li><a href="{% url 'usuarios:UsuarioList' %}">Usuarios</a></li>
+      <li><a href=" {% url 'usuarios:logout' %} ">LogOut</a></li>
+
     </ul>
 
   </div>

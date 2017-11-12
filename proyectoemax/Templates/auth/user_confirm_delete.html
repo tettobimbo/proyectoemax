@@ -1,0 +1,10 @@
+{% extends "auth/base_usuario.html" %}
+
+{% block content %}
+<h2>¿Desea eliminar el usuario: {{ user.username }}?</h2>
+<form method="POST" action="">
+    {% csrf_token %}
+    <input type="submit" value="Confirmar">
+</form>
+
+{% endblock %}

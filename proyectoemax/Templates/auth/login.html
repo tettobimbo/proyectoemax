@@ -14,7 +14,12 @@
 
   <div id="header">
     <div class="logo">
-      <a href="#">Login<span>EmaxSoftware</span></a>
+      <a href="#">Login<span>EmaxSoftware</span>
+         {% if user.is_authenticated %}
+         {{user.username}}
+    
+         {% endif %}
+      </a>
 
 
   <div id="container">
@@ -24,7 +29,7 @@
         <input type="hidden" name="action" value="login">
         <div class="box-top">Authentication</div>
         <div class="box-panel"> UserName: <input type="text" name="username" value="">  </div>
-        <div class="box-panel"> PassWord <input type="text" name="password" value="">  </div>
+        <div class="box-panel"> PassWord <input type="password" name="password" value="">  </div>
       <center>  <div class="box-panel"> <button type="submit" name="button">Aceptar</button>  </div> </center>
 
 

@@ -1,0 +1,32 @@
+{% extends "auth/base_usuario.html" %}
+
+{% block content %}
+
+<div class="content">
+
+<div id="box">
+  <div class="box-panel"> <a href="{% url 'usuarios:UsuarioCreate' %}">NUEVO USUARIO</a> </div>
+</div>
+
+
+<div id="box">
+      <div class="box-top">USUARIOS</div>
+          <div class="box-panel">
+            {%for hr in object_list%}
+            <br>
+            <h3> <LI>
+            <a href="{% url 'usuarios:UsuarioDetail' hr.id %}">  {{hr.username}} </a> |
+            <a href="{% url 'usuarios:UsuarioUpdate' hr.id %}">  <img src="/media/iconos/edit.png " alt=""> </a>
+            <a href="{% url 'usuarios:UsuarioDelete' hr.id %}">  <img src="/media/iconos/drop.png " alt=""> </a>
+            </h3></LI>
+            <br>
+            <hr>
+            {% endfor %}
+          </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

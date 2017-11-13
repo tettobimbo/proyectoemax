@@ -1,14 +1,74 @@
 <!DOCTYPE html>
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
 <html>
-  <head>
-    {% load staticfiles %}
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-  </head>
-  <body>
-    {% block list %}   {% endblock %}
-    <h1>{% block nombre %}   {% endblock %}</h1>
-    {% block content %}   {% endblock %}
-  </body>
+<head>
+<script>
+  function abrir(url) {
+  open(url,'','top=300,left=300,width=300,height=300') ;
+  }
+</script>
+
+<title>Admin template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="admin.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,400italic,600italic,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<div id="header">
+  <div class="logo">
+    <a href="{% url 'usuarios:index' %}">Emax<span>Software | </span>  </a>
+  </div>
+
+</div>
+
+
+<a class="mobile">MENU</a>
+
+
+<div id="container">
+
+  <div class="sidebar">
+    <ul id="nav">
+
+      <li><a href="{% url 'proyectos:ProyectoList' %}">Proyectos</a></li>
+      <li><a href="{% url 'herramientas:HerramientaList' %}">Herramientas</a></li>
+      <li><a href="{% url 'materiales:MaterialesList' %}">Materiales</a></li>
+      <li><a href="{% url 'usuarios:logout' %}">Retorno de Herramientas</a></li>
+      <li><a href="{% url 'usuarios:UsuarioList' %}">Usuarios</a></li>
+      <li><a href=" {% url 'usuarios:logout' %} ">LogOut</a></li>
+
+    </ul>
+
+  </div>
+
+{% block content %}  {% endblock %}
+
+
+  </div>
+
+
+</div><!-- #container -->
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+     $("a.mobile").click(function(){
+      $(".sidebar").slideToggle('fast');
+     });
+
+    window.onresize = function(event) {
+      if($(window).width() > 480){
+      	$(".sidebar").show();
+      }
+    };
+
+
+	});
+
+</script>
+
+</body>
 </html>

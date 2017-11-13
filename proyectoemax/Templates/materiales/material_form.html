@@ -1,19 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-    <h1>Material Nuevo</h1>
+{% extends "materiales/base_material.html" %}
 
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-         {{ form.as_p }}
-      <button type="submit">aceptar</button>
-    </form>
+{% block content %}
+    <div class="content">
 
-</body>
-</html>
+    <div id="box">
+          <div class="box-top"><h2>Material</h2></div>
+              <div class="box-panel">
+                <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <br>
+                <h3>
+                Nombre: {{ form.nombre }}
+                </h3>
+                <br>
+                <br>
+                <h3>
+                Cantidad: {{ form.cantidad }}
+                </h3>
+                <br>
+                <br>
+                <h3>
+                Medida: {{ form.medida }}
+                </h3>
+                <br>
+                <br>
+                <h3>
+                Preciounitario: {{ form.preciounitario }}
+                </h3>
+                <br>
+                <br>
+                <h3>
+                Imagen: {{ form.imagen }}
+                </h3>
+                <br>
+                <button type="submit">aceptar</button>
+                </form>
+
+
+
+
+              </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+{% endblock %}

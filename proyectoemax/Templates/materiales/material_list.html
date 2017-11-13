@@ -1,14 +1,33 @@
 {% extends "materiales/base_material.html" %}
 
-{% block list %}
-   <a href="{% url 'materiales:MaterialesCreate' %}">NUEVO MATERIAL</a>
+{% block content %}
 
-    {% for mt in object_list %}
-    <li>
-      <a href="{% url 'materiales:MaterialesDetail' mt.id %}">
-      {{mt.nombre}}
-      </a>
-      {% if mt.imagen %}<img src="{{ mt.imagen.url }}" alt=""> {% endif %}
-    </li>
-    {% endfor %}
+<div class="content">
+
+<div id="box">
+  <div class="box-panel"> <a href="{% url 'materiales:MaterialesCreate' %}">NUEVO MATERIAL</a> </div>
+</div>
+
+
+<div id="box">
+      <div class="box-top">Materiales</div>
+          <div class="box-panel">
+            {%for hr in object_list%}
+            <br>
+            <h3> <LI>
+              {% if hr.imagen %} <img src="{{ hr.imagen.url }}" width="75" height="75"/> {% endif %} |
+            <a href="{% url 'materiales:MaterialesDetail' hr.id %}">  {{hr.nombre}} </a> |
+            <a href="{% url 'materiales:MaterialesUpdate' hr.id %}">  <img src="/media/iconos/edit.png " alt=""> </a>
+            <a href="{% url 'materiales:MaterialesDelete' hr.id %}">  <img src="/media/iconos/drop.png " alt=""> </a>
+            </h3></LI>
+            <br>
+            <hr>
+            {% endfor %}
+          </div>
+
+    </div>
+
+</div>
+
+
 {% endblock %}

@@ -27,6 +27,9 @@ def authentication(request):
             return render(request, 'index/index.html', {})
         else:
             return render(request, 'auth/login.html', {})
+def index(request):
+    model=User
+    return render(request,'index/index.html')
 
 def logout_view(request):
     logout(request)

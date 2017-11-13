@@ -1,13 +1,31 @@
 {% extends "herramientas/herramientabase.html" %}
+{% block content %}
+<div class="content">
+  <div id="box">
+    <div class="box-panel"><a href="{% url 'herramientas:HerramientaCreate'%}"><h3>NUEVA HERRAMIENTA</a> | <a href="{% url 'herramientas:reporte'%}">Descargar Reporte</h3></a>
+    </div>
+  </div>
+  <div id="box">
+    <div class="box-top"> <h3>HERRAMIENTAS</h3></div>
+    <div class="box-panel">
+      {% for hr in object_list %}
+      <br>
+      <h3>
+        <li>
+          {% if hr.imagen%} <img src="{{ hr.imagen.url }}" width="75" height="75"> {% endif %} |
+          <a href="{% url 'herramientas:HerramientaDetail' hr.id %}"> {{hr.nombre}} </a> |
 
-{% block list %}
-    <a href="{% url 'herramientas:HerramientaCreate' %}">NUEVA HERRAMIENTA</a>
-    {%for hr in object_list%}
-    <LI>
-      <a href="{% url 'herramientas:HerramientaDetail' hr.id %}">
-      {{hr.nombre}} |
-      </a>
-    {% if hr.imagen %} <img src="{{ hr.imagen.url }}" alt=""> {% endif %}
-    </LI>
-    {% endfor %}
+          <a href="{% url 'herramientas:HerramientaUpdate' hr.id %}">  <img src="/media/iconos/edit.png " alt=""> </a>
+          <a href="{% url 'herramientas:HerramientaDelete' hr.id %}">  <img src="/media/iconos/drop.png " alt=""> </a>
+        </li>
+      </h3>
+      <br>
+      <hr>
+      {% endfor %}
+    </div>
+
+  </div>
+
+</div>
+
 {% endblock %}

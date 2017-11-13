@@ -1,10 +1,36 @@
 {% extends "materiales/base_material.html" %}
 
-{% block nombre %}
-  {{ material.nombre }} | <a href="{% url 'materiales:MaterialesUpdate' material.id %}">EDITAR</a> |
-  <a href="{% url 'materiales:MaterialesDelete' material.id %}">ELIMINAR</a>
-{% endblock %}
+
 
 {% block content %}
-  {% if material.imagen %}<img src="{{ material.imagen.url }}" alt="">{% endif %}
+
+
+<div class="content">
+<div id="box">
+      <div class="box-top">{{material.nombre}}</div>
+          <div class="box-panel">
+
+
+            <br>
+              <h3>Cantidad:</h3> {{material.cantidad}}
+            <br>
+            <hr>
+            <br>
+              <h3>Medida:</h3> {{material.medida}}
+            <br>
+            <hr>
+            <br>
+              <h3>Preciounitario:</h3> {{material.preciounitario}}
+            <br>
+            <hr>
+            <br>
+             {% if material.imagen %}<img src="{{  material.imagen.url }}" width="200" height="200"/> {% endif %}
+            <br>
+            <hr>
+
+          </div>
+
+    </div>
+  </div>
+
 {% endblock %}

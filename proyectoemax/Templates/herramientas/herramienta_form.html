@@ -1,15 +1,33 @@
 {% extends "herramientas/herramientabase.html" %}
 
 {% block content %}
-    <h1>Nueva herramienta</h1>
 
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-         {{ form.as_p }}
-      <button type="submit">aceptar</button>
 
-    </form>
+<div class="content">
+  <div id="box">
+    <div class="box-top"> <h3>NUEVA HERRAMIENTA</h3></div>
+    <div class="box-panel">
 
-</body>
-</html>
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <br>
+          <h3>Nombre: {{ form.nombre }} </h3>
+          <br>
+          <br>
+          <h3>Existencias: {{form.existencias}}</h3>
+          <br>
+          <br>
+          <h3>Precio: {{form.preciounitario}}</h3>
+          <br>
+          <br>
+          <h3>Imagen: {{form.imagen}}</h3>
+
+        <button type="submit">aceptar</button>
+
+      <br>
+    </div>
+
+  </div>
+
+</div>
 {% endblock %}

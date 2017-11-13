@@ -5,7 +5,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns =[
     url(r'^login/$' , views.authentication , name='authentication'),
     url(r'^index/$' , views.index , name='index'),
-    url(r'^logout/$' , auth_views.logout , {'next_page':'/login'}, name='logout'),
+    url(r'^logout/$' , auth_views.logout , {'next_page':'/accounts/login'}, name='logout'),
     url(r'^listarusuarios/$' , views.UsuarioList.as_view() , name='UsuarioList'),
     url(r'^eliminarusuario/(?P<pk>\d+)/$', views.UsuarioDelete.as_view() , name='UsuarioDelete'),
     url(r'^editarusuario/(?P<pk>\d+)/$', views.UsuarioUpdate.as_view() , name='UsuarioUpdate'),

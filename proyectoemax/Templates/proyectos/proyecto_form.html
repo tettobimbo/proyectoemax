@@ -1,15 +1,40 @@
 {% extends "proyectos/proyectobase.html" %}
 
 {% block content %}
-    <h1>Nuevo proyecto</h1>
+<div class="content">
+  <div id="box">
+    <div class="box-top"> <h3>PROYECTO</h3></div>
+    <div class="box-panel">
 
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-         {{ form.as_p }}
-      <button type="submit">aceptar</button>
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <br>
+          <h3>Fecha Entrega: {{ form.fechaentrega }} </h3>
+          <br>
+          <br>
+          <h3>Direccion:     {{form.direccion}}</h3>
+          <br>
+          <br>
+          <h3>Descripcion: {{form.descripcion}}</h3>
+          <br>
+          <br>
+          <h3>Encargado:     {{form.encargado}}</h3>
+          <br>
+          <br>
+          <h3>Total Material:{{form.totalmaterial}}</h3>
+          <br>
+          <br>
+          <h3>Material:      {{form.Material}}</h3>
+          <br>
+          <br>
+          <h3>Herramienta:   {{form.Herramienta}}</h3>
 
-    </form>
+        <button type="submit">aceptar</button>
 
-</body>
-</html>
+      <br>
+    </div>
+
+  </div>
+
+</div>
 {% endblock %}

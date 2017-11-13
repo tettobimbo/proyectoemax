@@ -9,6 +9,7 @@ from app.herramientas.forms import herramientasform
 from io import BytesIO
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4, cm
+from reportlab.lib import styles
 from django.views.generic import (
     ListView,
     DetailView
@@ -62,23 +63,48 @@ def reporte(request):
 
     c.line(460,747,560,747)
 
-    #ESTILO DE TABLA
-    styles=getSampleStyleSheet()
-    styleBH = styles["Normal"]
-    styleBH.alignment = TA_CENTER
-    styleBH.fontSize = 10
-
-    nombre = Paragraph('''Nombre''',styleBH)
-    existencias = Paragraph('''Existencias''',styleBH)
-    preciounitario = Paragraph('''Precio Unitario''',styleBH)
-
-    data=[]
-    data.append([Nombre, Existencias,Precio unitario])
-
-    #ESTILO DE TABLA
-
-
-
+#     herramienta=[ {'hector','3','2.4'}]
+#
+#     #ESTILO DE TABLA
+#     #style=getSampleStyleSheet()
+#     styleBH = style["Normal"]
+#     styleBH.alignment = TA_CENTER
+#     styleBH.fontSize = 10
+#
+# #valores de TABLA
+#     nombre = Paragraph('''Nombre''',styleBH)
+#     existencias = Paragraph('''Existencias''',styleBH)
+#     preciounitario = Paragraph('''Precio Unitario''',styleBH)
+#
+#
+#
+#
+#
+#
+#     data.append([Nombre, Existencias,Preciounitario])
+#
+#     #ESTILO DE TABLA
+#     styleN = styles["BodyText"]
+#     styleN.alignment = TA_CENTER
+#     styleN.fontSize = 7
+#
+#     high = 650
+#     for herramienta in herramientas:
+#         this_herramienta = [herramienta['Nombre'],herramienta['existencias'],herramienta['preciounitario']]
+#         data.append(this_herramienta)
+#         high = high-18
+#
+#     #Tamano de TABLA
+#     width, height = A4
+#     table = Table(data,colwidth=[5.2*cm,1.9*cm,1.9*cm])
+#     table.setStyle(TableStyle([
+#         ('INNERGRID', (0,0),(-1,-1),0.25,colors.black),
+#         ('BOX', (0,0),(-1,-1),0.25, colors.black),]))
+#
+#     #TAMANO DEL PDF
+#     table.wraOn(c,width,height)
+#     table.drawOn(c,30,high)
+#     c.showPage()
 
     #SAVE PDF
     c.save()

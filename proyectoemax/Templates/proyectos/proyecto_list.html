@@ -1,13 +1,31 @@
 {% extends "proyectos/proyectobase.html" %}
 
-{% block list %}
-    <a href="{% url 'proyectos:ProyectoCreate' %}">NUEVO PROYECTO</a>
-    {%for hr in object_list%}
-    <LI>
-      <a href="{% url 'proyectos:ProyectoDetail' hr.id %}">
-      {{hr.id  }} |
-      </a>
+{% block content %}
+<div class="content">
 
-    </LI>
-    {% endfor %}
+<div id="box">
+  <div class="box-panel"> <h3> <a href="{% url 'proyectos:ProyectoCreate' %}">NUEVO POYECTO</a></h3> </div>
+</div>
+
+
+<div id="box">
+      <div class="box-top"> <h3>Proyecto</h3></div>
+          <div class="box-panel">
+            {%for pro in object_list%}
+            <br>
+            <h3> <LI>
+            <a href="{% url 'proyectos:ProyectoDetail' pro.id %}">  {{pro.id}} </a> |
+            {{pro.descripcion}} | 
+            <a href="{% url 'proyectos:ProyectoUpdate' pro.id %}">  <img src="/media/iconos/edit.png " alt=""> </a>
+            <a href="{% url 'proyectos:ProyectoDelete' pro.id %}">  <img src="/media/iconos/drop.png " alt=""> </a>
+            </h3></LI>
+            <br>
+            <hr>
+            {% endfor %}
+          </div>
+
+    </div>
+
+</div>
+
 {% endblock %}

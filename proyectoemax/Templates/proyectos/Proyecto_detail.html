@@ -1,5 +1,109 @@
-{% extends "proyectos/proyectobase.html" %}
+<!DOCTYPE html>
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+<html>
+<head>
+<title>Admin template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="admin.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,400italic,600italic,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
 
-{% block content %}
-  {{ proyecto.descripcion }} |  <a href="{% url 'proyectos:ProyectoUpdate' proyecto.id %}">editar</a> | <a href="{% url 'proyectos:ProyectoDelete' proyecto.id %}">eliminar</a>
-{% endblock %}
+<div id="header">
+  <div class="logo">
+    <a href="#">Emax<span>Software | </span> </a>
+  </div>
+
+</div>
+
+
+<a class="mobile">MENU</a>
+
+
+<div id="container">
+
+  <div class="sidebar">
+    <ul id="nav">
+
+      <li><a href="{% url 'proyectos:ProyectoList' %}">Proyectos</a></li>
+      <li><a href="{% url 'herramientas:HerramientaList' %}">Herramientas</a></li>
+      <li><a href="{% url 'materiales:MaterialesList' %}">Materiales</a></li>
+      <li><a href="{% url 'usuarios:logout' %}">Retorno de Herramientas</a></li>
+      <li><a href="{% url 'usuarios:UsuarioList' %}">Usuarios</a></li>
+      <li><a href=" {% url 'usuarios:logout' %} ">LogOut</a></li>
+
+    </ul>
+
+  </div>
+
+  <div class="content">
+
+
+<div id="box">
+      <h2> <div class="box-top">{{proyecto.id}}</div> </h2>
+          <div class="box-panel">
+
+            <br>
+              <h3>Fecha:</h3> {{proyecto.fechaentrega}}
+            <br>
+            <hr>
+            <br>
+              <h3>Direccion:</h3> {{proyecto.direccion}}
+            <br>
+            <hr>
+            <br>
+              <h3>Descripcion:</h3> {{proyecto.descripcion}}
+            <br>
+            <hr>
+            <br>
+              <h3>Encargado:</h3> {{proyecto.encargado}}
+            <br>
+            <hr>
+            <br>
+              <h3>Total Material:</h3> {{proyecto.totalmaterial}}
+            <br>
+            <hr>
+            <br>
+              <h3>Materiales:</h3>  {% for mat in proyecto.Material.all %} {{mat.nombre}} | {% endfor %}
+            <br>
+            <hr>
+            <br>
+              <h3>Herramientas: </h3> {% for her in proyecto.Herramienta.all %} {{her.nombre}} | {% endfor %}
+          </div>
+
+    </div>
+
+
+
+
+
+
+
+
+  </div>
+
+
+</div><!-- #container -->
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+     $("a.mobile").click(function(){
+      $(".sidebar").slideToggle('fast');
+     });
+
+    window.onresize = function(event) {
+      if($(window).width() > 480){
+      	$(".sidebar").show();
+      }
+    };
+
+
+	});
+
+</script>
+
+</body>
+</html>
